@@ -1,0 +1,63 @@
+<div class="container" >
+ 
+        <div class="row" id="page6_row" style="background-color: #F8F9F9 ">
+ 
+            <h1>Project</h1>
+            <hr>
+ 
+            <div class="col-md-5 col-sm-5" id="c1">
+ 
+                <form>
+                    <label>Name</label>
+                    <input type="text" ng-model="project.name" class="form-control" id="field1">
+                    <br>
+                    <label>Description</label>
+                    <textarea ng-model="project.desc" class="form-control" id="field2" rows="10"></textarea> 
+                <br>
+                <br>
+                <br>
+                <button type="button" class="btn btn-primary" ng-click="saveNewProject()">Save</button>
+                <button type="reset" class="btn btn-warning">Revert Changes</button>
+               
+            </div>
+ 
+            <div class="col-md-1 col-sm-1" id="c3">
+                <hr>
+            </div>
+ 
+            <div class="col-md-5 col-sm-5" id="c2">
+                    <label>Product Owner</label>
+                    <input type="text" id="field3" ng-model="product.owner" class="form-control"></input>
+                    <br>
+                    <label>My role</label>
+                    <select class="form-control" ng-model="project.myrole" id="field4">
+                        <option value=""></option>
+                        <option ng-repeat="role in roles" value={{role.role_name}}>{{role.role_sname}}</option>
+                    </select>
+                    <br>
+ 
+                    <label>Development Team</label>
+                    <table class="table table-bordered">
+                            <tr ng-repeat="x in userdata">
+                                <td>{{x.name}}</td>
+                                <td>{{x.role}}</td>
+                            </tr>
+                    </table>
+ 
+                    <div class="row">
+                        <div class="col-md-9">
+                            <input type="number" ng-model="product.dt.userid" class="form-control" id="field5"></input>
+                            <select ng-model="project.dt.role" id="field4">
+                                <option ng-repeat="role in roles" value={{role.role_name}}>{{role.role_sname}}</option>
+                        </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-default" ng-click="newdtitem(product.dt.userid,project.dt.role)" >Add</button>
+                        </div>
+                    </div>
+                    </form>
+                <br>
+            </div>
+        </div>
+    </div>
+ 

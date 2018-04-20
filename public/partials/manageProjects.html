@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="page5_update" ng-if="newprojectsuccess">
+        <span><p>A project with id : {{projectid}} was saved successfully</p>
+        <button type="button" class="close" ng-click="closepopup()" data-dismiss="modal">&times;</button></span>
+    </div>
+    <div class="table">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name </th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="active" ng-repeat="x in projectData">
+                    <td>{{x.project_name}}</td>
+                    <td>{{x.description}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- table ends -->
+    <div class="well well-sm">
+        <button class="btn btn-default"><a href="#newProject">New Project</a></button>
+    </div>
+    <!-- down jumbotron ends -->
+</div>
+<!-- container ends -->

@@ -1,0 +1,82 @@
+<!-- ----------u15.png------ -->
+    <body >
+        <div class="container">
+
+            <div class="row" id="page6_row" style="background-color: #F8F9F9 ">
+
+                <h1>User Registration</h1>
+                <hr>
+                <!-- <div class="well well-sm" style="width: 60%">
+                    <p style="color: #6C291A; padding-left: 70px; font-size: 18px;">Fields marked with * are MANDATORY</p>
+                </div> -->
+                
+                <p class="form_enter_values_ag" ng-if="userCreateSuccess">Congratulations, user created successfully!</p>
+                <p class="form_enter_values_ag2" ng-if="userCreateFailure">User creation failed!</p>
+                <p class="form_enter_values_ag2" ng-if="userPasswordMismatch">Password mismatch. Please Enter again</p>
+
+                <form class="form-horizontal" name="myForm">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="uname">User ID*</label>
+                        <div class="col-sm-9" style="width: 60%">
+                            <input type="text" class="form-control" name="uid" id="uname" placeholder="Enter User Name" ng-model="user.userid" ng-change="useridcheck()" ng-required="true">
+                            <span ng-if="userid_mismatch" class="error_messages">Please enter valid 6 digit user id</span>
+                            <span ng-show="myForm.uid.$touched && myForm.uid.$error.required" class="error_messages">This is a required field</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="pwd">Password*</label>
+                        <div class="col-sm-9" style="width: 60%">
+                            <input type="password" class="form-control" name="pass" id="pwd" placeholder="Enter password" ng-model="user.password" ng-required="true">
+                            <span ng-show="myForm.pass.$touched && myForm.pass.$error.required" class="error_messages">This is a required field</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="cnfrm_pwd">Confirm Password*</label>
+                        <div class="col-sm-9" style="width: 60%">
+                            <input type="password" class="form-control" id="cnfrm_pwd" placeholder="Confirm password" ng-model="user.cpassword" ng-change="passcheck()">
+                            <span ng-if="password_mismatch" class="error_messages">Please enter same password as above</span>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="fname">First Name*</label>
+                        <div class="col-sm-9" style="width: 60%">
+                            <input type="text" name="fname" class="form-control" id="fname" placeholder="Enter First Name" ng-model="user.firstname" ng-required="true">
+                            <span ng-show="myForm.fname.$touched && myForm.fname.$error.required" class="error_messages">This is a required field</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="lname">Last Name</label>
+                        <div class="col-sm-9" style="width: 60%">
+                            <input type="text" class="form-control" id="lname" placeholder="Enter Last Name" ng-model="user.lastname">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="email">Email*</label>
+                        <div class="col-sm-9" style="width: 60%">
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="user.email" name="email" ng-required="true" ng-change="emailcheck()"> 
+                            <span ng-show="myForm.email.$touched && myForm.email.$error.email" class="error_messages">Please enter a valid email address</span>
+                            <span ng-show="myForm.email.$touched && myForm.email.$error.required" class="error_messages">This is a required field</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="isadmin">Is Admin*</label>
+                        <div class="col-sm-2" style="width: 60%">
+                            <input type="radio" id="admin" ng-model="user.isadmin" value="true" ><label for="isadmin">Yes</label>
+                            <input type="radio" id="admin" ng-model="user.isadmin" value="false" ><label for="isadmin">No</label>
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <button type="submit" class="btn btn-primary" id="save" ng-click="createUser()" ng-disabled="onload || userid_mismatch || password_mismatch">Save</button>
+                            <button type="reset" class="btn btn-warning">Revert Changes </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>

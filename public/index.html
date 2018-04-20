@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Project Management System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/MyCss.css">
+	<link rel="stylesheet" type="text/css" href="vender/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#home">Ascrum</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="#CurrentProjects" ng-if="isLoggedIn">Current Projects</a></li>
+                    <li><a href="#" id="myprojects" ng-if="isLoggedIn">My Tasks</a></li>
+                    <li><a href="#" id="manageprojects" ng-if="isProductOwner">Manage Projects</a></li>
+                    <li> 
+	                    <a href="#admin" data-toggle="dropdown" ng-if="isAdmin" class="dropdown-toggle">Admin<b class="caret"></b></a>
+				        <ul class="dropdown-menu">
+				            <li><a href="#manageProjects">Manage Projects</a></li>
+				            <li><a href="#manageUser">Manage Users</a></li>
+				        </ul>
+				    </li>
+                </ul>
+
+                <button class="btn btn-default" id="login" ng-if="!isLoggedIn" data-toggle="modal" data-target="#myModal">Login</button>
+                <button class="btn btn-default" id="logout" ng-if="isLoggedIn" data-toggle="modal" ng-click="logout()"><a href="#home">Logout</a></button>
+                <span class="headertext pull-right" id="welcome" ng-if="isLoggedIn">Welcome : {{userName}}</span>
+            </div>
+        </nav>
+        <!-- Trigger the modal with a button -->
+        <!-- Modal -->
+
+        <div ng-view>
+			
+		</div>
+
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title" style="font-family: georgia;">Sign in</h3>
+                    </div>
+                    <div class="content">
+                        <form id="login_form">
+                            <!-- ONLY TO INSERT LINE BREAK IN PAGE -->
+                            <!-- SHOW THE BELOW BOX ONLY IF NO VALUES ARE ENTERED IN INPUT FIELDS -->
+                            <div>
+                                <p class="form_enter_values_ag" ng-if="!userInvalid">Please enter your login details</p>
+                                <p class="form_enter_values_ag2" ng-if="userInvalid">Wrong Input Details. Please Enter again.</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="uemail" ng-model="user.email" placeholder="Enter email" style="width: 70%">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input type="password" class="form-control" id="upass" ng-model="user.password" placeholder="Enter password" style="width: 70%" >
+                            </div>
+
+                            <div class="modal-footer">
+                                <div class="formbuttons">
+                                    <button type="submit" class="btn btn-info" ng-click="login()">Submit</button>
+                                    <button type="reset" class="btn btn-default">Clear</button>
+                                    <button type="button" class="btn btn-warning" ng-click="form_toggle()" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ENTIRE DATA COMES HERE  -->
+
+        
+
+    </div>
+    <script src="vender/jquery/jquery.min.js"></script>
+    <script src="vender/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vender/angular/angular.min.js"></script>
+    <script src="vender/angular/angular-route.min.js"></script>
+    <script src="vender/angular/angular-cookies.min.js"></script>
+	<script src="js/controllers/maincontroller.js"></script>
+    <script src="js/controllers/newusercontroller.js"></script>
+    <script src="js/controllers/manageusercontroller.js"></script>  
+    <script src="js/controllers/manageprojectcontroller.js"></script>
+    <script src="js/controllers/currentprojectcontroller.js"></script>
+    <script src="js/controllers/newprojectcontroller.js"></script>    
+    <script src="js/services/authservice.js"></script>
+    <script src="js/services/userservice.js"></script>
+    <script src="js/run.js"></script>
+    <script src="js/route.js"></script>  
+
+</body>
+
+</html>
